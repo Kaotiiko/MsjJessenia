@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="theme-color" content="#050814"/>
+  <title>Para Jessenia ✨</title>
+  <style>
+    :root{--accent:#ff9bb5;--text-soft:#e0ddf5;}
+    *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;}
+    html{
+      height:100%;background:#050814;
+      padding-top:env(safe-area-inset-top);
+      padding-bottom:env(safe-area-inset-bottom);
+    }
+    body{
+      min-height:100%;width:100%;
+      display:flex;align-items:center;justify-content:center;
+      padding:16px;
+      font-family:'Georgia','Palatino Linotype',serif;
+      color:#f8f5ff;
+      overflow-y:auto;
+      -webkit-overflow-scrolling:touch;
+      background:
+        radial-gradient(circle at 15% 20%,rgba(255,155,181,0.14),transparent 60%),
+        radial-gradient(circle at 80% 80%,rgba(140,170,255,0.16),transparent 55%),
+        #050814;
+    }
+    .glow-orbit{
+      position:fixed;inset:-40%;pointer-events:none;z-index:0;
+      background:
+        radial-gradient(circle at 20% 25%,rgba(255,155,181,0.18),transparent 60%),
+        radial-gradient(circle at 78% 75%,rgba(140,170,255,0.2),transparent 55%);
+      animation:orbitGlow 14s ease-in-out infinite alternate;
+    }
+    @keyframes orbitGlow{
+      0%{transform:translate3d(0,0,0) scale(1);opacity:.8;}
+      50%{transform:translate3d(-12px,10px,0) scale(1.03);opacity:1;}
+      100%{transform:translate3d(8px,-10px,0) scale(1.02);opacity:.85;}
+    }
+    .dots{position:fixed;inset:0;pointer-events:none;z-index:1;}
+    .dots span{
+      position:absolute;width:4px;height:4px;border-radius:50%;
+      background:radial-gradient(circle,#ffe0ec,#ff9bb5);
+      opacity:0;box-shadow:0 0 10px rgba(255,155,181,0.9);
+      animation:floatDot 9s linear infinite;will-change:transform,opacity;
+    }
+    @keyframes floatDot{
+      0%{opacity:0;transform:translate3d(0,0,0);}
+      15%{opacity:.85;}85%{opacity:.85;}
+      100%{opacity:0;transform:translate3d(-16px,-22px,0);}
+    }
+    .card{
+      position:relative;z-index:5;
+      width:100%;max-width:600px;
+      padding:28px 20px 26px;border-radius:28px;
+      background:linear-gradient(135deg,rgba(12,9,32,0.97),rgba(8,7,24,0.99));
+      box-shadow:0 24px 70px rgba(0,0,0,0.85),0 0 40px rgba(255,155,181,0.2);
+      border:1.5px solid rgba(255,155,181,0.3);
+      display:flex;flex-direction:column;align-items:center;text-align:center;
+    }
+    .card-glow{
+      position:absolute;inset:-1px;border-radius:28px;
+      background:conic-gradient(from 160deg,
+        transparent,rgba(255,155,181,0.6),transparent 30%,
+        rgba(160,180,255,0.5),transparent 60%,
+        rgba(255,255,255,0.35),transparent 90%);
+      mix-blend-mode:screen;opacity:0.5;filter:blur(12px);z-index:-1;
+      pointer-events:none;animation:ring 16s linear infinite;will-change:transform;
+    }
+    @keyframes ring{to{transform:rotate(360deg);}}
+    .tag{
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+      font-size:11px;text-transform:uppercase;letter-spacing:0.2em;
+      padding:6px 16px;border-radius:999px;
+      border:1px solid rgba(255,255,255,0.16);
+      background:rgba(255,255,255,0.06);
+      color:var(--text-soft);margin-bottom:14px;
+      display:inline-flex;align-items:center;gap:8px;
+    }
+    h1{
+      font-size:clamp(20px,5.5vw,28px);letter-spacing:0.12em;
+      text-transform:uppercase;font-weight:500;margin-bottom:6px;
+      background:linear-gradient(135deg,#ffffff,#ffdeec,#ff9bb5);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .subtitle{font-size:clamp(12px,3.5vw,14px);color:var(--text-soft);margin:0 auto 16px;line-height:1.7;}
+    .divider{
+      position:relative;width:110px;height:1px;
+      margin:6px auto 18px;
+      background:linear-gradient(90deg,transparent,#ffb9ce,#ffcfe0,transparent);
+    }
+    .divider::before,.divider::after{
+      content:'✦';position:absolute;top:50%;transform:translateY(-50%);
+      font-size:9px;color:#ffb9ce;
+    }
+    .divider::before{left:-14px;}.divider::after{right:-14px;}
+    .heart-orbit{
+      width:120px;height:120px;border-radius:50%;
+      border:1px dashed rgba(255,155,181,0.38);
+      display:flex;align-items:center;justify-content:center;
+      margin-bottom:14px;position:relative;flex-shrink:0;
+    }
+    .heart-orbit::before{
+      content:'';position:absolute;width:6px;height:6px;border-radius:50%;
+      background:#ff9bb5;box-shadow:0 0 10px rgba(255,155,181,0.9);
+      animation:dotOrbit 10s linear infinite;will-change:transform;
+    }
+    @keyframes dotOrbit{
+      0%{transform:rotate(0deg) translateX(60px);}
+      100%{transform:rotate(360deg) translateX(60px);}
+    }
+    .heart{
+      width:72px;height:72px;position:relative;
+      animation:latido 1.5s ease-in-out infinite;
+      filter:drop-shadow(0 0 14px rgba(255,155,181,0.8));will-change:transform;
+    }
+    .heart::before,.heart::after{
+      content:"";position:absolute;width:40px;height:64px;
+      background:radial-gradient(circle at 20% 20%,#ffe9f1,#ff9bb5 30%,#ff4e83 70%);
+      border-radius:46px 46px 0 0;
+    }
+    .heart::before{left:18px;transform:rotate(-45deg);transform-origin:0 100%;}
+    .heart::after{left:2px;transform:rotate(45deg);transform-origin:100% 100%;}
+    @keyframes latido{0%,100%{transform:scale(1);}30%{transform:scale(1.08);}60%{transform:scale(0.97);}}
+    .btn-wrap{display:flex;flex-direction:column;align-items:center;gap:6px;}
+    .btn-heart{
+      background:none;border:none;cursor:pointer;
+      font-size:clamp(40px,10vw,52px);line-height:1;
+      padding:12px 20px;
+      min-width:76px;min-height:76px;
+      display:flex;align-items:center;justify-content:center;
+      filter:drop-shadow(0 0 10px rgba(255,155,181,0.5));
+      animation:heartBtnPulse 2s ease-in-out infinite;will-change:filter;
+      touch-action:manipulation;
+      -webkit-user-select:none;user-select:none;
+    }
+    @keyframes heartBtnPulse{
+      0%,100%{filter:drop-shadow(0 0 8px rgba(255,155,181,0.45));}
+      50%{filter:drop-shadow(0 0 24px rgba(255,155,181,0.95));}
+    }
+    .btn-heart:active{transform:scale(0.84);}
+    .btn-heart:disabled{opacity:0.35;cursor:not-allowed;animation:none;}
+    .btn-label{
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+      font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+      color:rgba(255,185,206,0.7);
+    }
+    .message{
+      margin-top:16px;width:100%;
+      padding:20px 16px 18px;border-radius:20px;
+      background:linear-gradient(135deg,rgba(255,155,181,0.14),rgba(28,23,62,0.98));
+      border:1px solid rgba(255,155,181,0.42);
+      color:var(--text-soft);
+      font-size:clamp(14.5px,4vw,16px);
+      line-height:2;text-align:left;white-space:pre-line;letter-spacing:0.2px;
+      box-shadow:0 14px 36px rgba(0,0,0,0.7);
+      max-height:50vh;overflow-y:auto;
+      -webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+      opacity:0;transform:translateY(10px);
+      transition:opacity 0.5s ease,transform 0.5s ease;
+    }
+    .message.visible{opacity:1;transform:translateY(0);}
+    .message::-webkit-scrollbar{width:4px;}
+    .message::-webkit-scrollbar-thumb{background:rgba(255,155,181,0.35);border-radius:4px;}
+    .footer-mini{
+      margin-top:14px;font-size:10px;letter-spacing:0.24em;text-transform:uppercase;
+      color:rgba(225,218,255,0.5);
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    }
+    .footer-mini span{color:#ffb9ce;}
+    .music-controls{
+      position:fixed;
+      bottom:calc(20px + env(safe-area-inset-bottom));
+      right:20px;z-index:30;
+      background:rgba(8,7,22,0.95);
+      -webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);
+      border-radius:50px;padding:10px 16px;
+      border:1.5px solid rgba(255,155,181,0.35);
+      box-shadow:0 8px 32px rgba(0,0,0,0.7);
+      display:none;align-items:center;gap:10px;
+    }
+    .music-controls.active{display:flex;}
+    .music-btn{
+      background:transparent;border:none;color:#ff9bb5;
+      font-size:20px;cursor:pointer;
+      min-width:44px;min-height:44px;
+      display:flex;align-items:center;justify-content:center;
+      touch-action:manipulation;
+      -webkit-user-select:none;user-select:none;
+    }
+    .music-btn:active{transform:scale(1.18);}
+    .music-info{
+      color:#e0ddf5;font-size:12px;
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+      max-width:130px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    }
+    @media(max-height:600px){
+      .heart-orbit{width:90px;height:90px;margin-bottom:8px;}
+      .heart{width:54px;height:54px;}
+      .heart::before,.heart::after{width:30px;height:48px;}
+      .heart::before{left:12px;}
+      .card{padding:16px 16px 14px;}
+      .divider{margin:4px auto 12px;}
+    }
+    @media(max-width:360px){
+      .card{padding:20px 14px 18px;}
+      .message{font-size:14px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="glow-orbit"></div>
+  <div class="dots" id="dots"></div>
+
+  <main class="card">
+    <div class="card-glow"></div>
+    <div class="tag"><span>✨</span><span>Encuentros que parecen casualidad</span></div>
+    <h1>Para Jessenia</h1>
+    <p class="subtitle">un pequeño mensaje para usted</p>
+    <div class="divider"></div>
+    <div class="heart-orbit"><div class="heart"></div></div>
+    <div class="btn-wrap" id="btnWrap">
+      <button class="btn-heart" id="showBtn" aria-label="Ver mensaje">🩷</button>
+      <p class="btn-label">toca el corazón</p>
+    </div>
+    <section class="message" id="message" aria-live="polite"></section>
+    <p class="footer-mini"><span>Para Jessenia</span></p>
+  </main>
+
+  <div class="music-controls" id="musicControls">
+    <button class="music-btn" id="playPauseBtn" aria-label="Play/Pausa">▶️</button>
+    <div class="music-info">Para una Bonita – Fresco ft Claudia</div>
+  </div>
+
+  <audio id="backgroundMusic" loop preload="auto"
+         playsinline
+         webkit-playsinline
+         x-webkit-airplay="deny">
+    <source src="https://github.com/Kaotiiko/MsjJessenia/raw/main/Para%20una%20Bonita%20-%20Fresco%20ft%20Claudia%20%23CaneRecords%20%28%20Rap%20Rom%C3%A1ntico%20%29%20Lima%20-%20Per%C3%BA%20-%20MeDicen%20Fresco%20%28128k%29.mp3" type="audio/mpeg"/>
+  </audio>
+
+  <script>
+    (function(){
+      var c = document.getElementById('dots');
+      for (var i = 0; i < 18; i++) {
+        var s = document.createElement('span');
+        s.style.cssText =
+          'left:' + (Math.random()*100) + '%;' +
+          'top:'  + (Math.random()*100) + '%;' +
+          'transform:scale(' + (0.6+Math.random()*0.85) + ');' +
+          'animation-delay:' + (Math.random()*8) + 's';
+        c.appendChild(s);
+      }
+    })();
+
+    var showBtn       = document.getElementById('showBtn');
+    var btnWrap       = document.getElementById('btnWrap');
+    var messageEl     = document.getElementById('message');
+    var audio         = document.getElementById('backgroundMusic');
+    var musicControls = document.getElementById('musicControls');
+    var playPauseBtn  = document.getElementById('playPauseBtn');
+    var activated     = false;
+
+    var messageText =
+      'Desde que apareciste nació una emoción,\n' +
+      'de esas que animan a avanzar;\n' +
+      'como si tu forma tranquila y tu corazón\n' +
+      'me enseñaran, sin decirlo, a mejorar.\n\n' +
+      'Hay encuentros que llegan con algo de luz,\n' +
+      'de esos que no se pueden forzar;\n' +
+      'y sin decir mucho ni hacer gran ruido…\n' +
+      'te recuerdan que siempre se debe soñar. ✨';
+
+    function typeWriter(text, el, speed) {
+      var i = 0;
+      function tick() {
+        if (i < text.length) {
+          el.textContent += text.charAt(i++);
+          if (i % 40 === 0) el.scrollTop = el.scrollHeight;
+          setTimeout(tick, speed);
+        }
+      }
+      tick();
+    }
+
+    function tryPlay() {
+      audio.volume = 1.0;
+      musicControls.classList.add('active');
+      var p = audio.play();
+      if (p !== undefined) {
+        p.then(function(){ playPauseBtn.textContent = '⏸️'; })
+         .catch(function(){ playPauseBtn.textContent = '▶️'; });
+      }
+    }
+
+    function activate(e) {
+      if (activated) return;
+      activated = true;
+      if (e && e.preventDefault) e.preventDefault();
+      showBtn.disabled = true;
+      btnWrap.style.transition = 'opacity .4s ease, transform .4s ease';
+      btnWrap.style.opacity = '0';
+      btnWrap.style.transform = 'scale(0.8)';
+      setTimeout(function(){ btnWrap.style.display = 'none'; }, 420);
+      messageEl.classList.add('visible');
+      typeWriter(messageText, messageEl, 34);
+      tryPlay();
+    }
+
+    showBtn.addEventListener('touchend', activate, { passive: false });
+    showBtn.addEventListener('click', function(e){ if (!activated) activate(e); });
+
+    var toggling = false;
+    function toggleAudio(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      if (toggling) return;
+      toggling = true;
+      setTimeout(function(){ toggling = false; }, 300);
+      if (audio.paused) {
+        audio.play()
+          .then(function(){ playPauseBtn.textContent = '⏸️'; })
+          .catch(function(){});
+      } else {
+        audio.pause();
+        playPauseBtn.textContent = '▶️';
+      }
+    }
+    playPauseBtn.addEventListener('touchend', toggleAudio, { passive: false });
+    playPauseBtn.addEventListener('click', function(e){
+      if (!('ontouchstart' in window)) toggleAudio(e);
+    });
+  </script>
+</body>
+</html>
